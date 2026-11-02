@@ -161,7 +161,6 @@ body.hb footer{padding-bottom:110px}
 
 <div id="bar"><div class="in"><span id="bt" style="font-weight:700"></span><span><a class="btn o" href="#receipt">ارسال رسید</a> <a class="btn" id="bo" href="https://t.me/Arshia135784" target="_blank" rel="noopener">سفارش در تلگرام</a></span></div></div>
 <script>
-var BOT_TOKEN="9143619410:AAFg-ks0UB8RZfMzrYjcGi5JMthZ9NbWeAY",CHAT_ID="7044598524";
 var PL=[["۲ هفته","","150","200","تست و کوتاه\u200cمدت"],["۱ ماهه","محبوب\u200cترین","250","300","انتخاب محبوب کاربران"],["۲ ماهه","مقرون\u200cبه\u200cصرفه","350","450","برای استفاده بلندمدت\u200cتر"],["۳ ماهه","بیشترین تخفیف","500","700","پلن سه\u200cماهه"]];
 var U=1,S=-1;
 var fa=function(n){return String(n).replace(/\d/g,function(d){return "۰۱۲۳۴۵۶۷۸۹"[d]})};
@@ -206,18 +205,44 @@ function copyCard(el){
   try{navigator.clipboard.writeText(t).then(ok,fb)}catch(e){fb()}
 }
 (function(){
- var btn=document.getElementById("rBtn"),msg=document.getElementById("rMsg");
- var fallback=function(t){msg.innerHTML=t+' <a href="https://t.me/Arshia135784" target="_blank" rel="noopener">ارسال از طریق تلگرام</a>'};
+ var btn=document.getElementById("rBtn");
+ var msg=document.getElementById("rMsg");
+
  btn.addEventListener("click",function(){
-  var u=document.getElementById("rUser").value.trim(),p=document.getElementById("rPlan").value,f=document.getElementById("rFile").files[0];
-  if(!u||!f){msg.textContent="نام کاربری تلگرام و تصویر رسید را وارد کنید.";return}
-  if(BOT_TOKEN.indexOf("PUT_")===0){fallback("ارسال فرم هنوز فعال نشده است.");return}
-  btn.disabled=true;msg.textContent="در حال ارسال...";
-  var d=new FormData();d.append("chat_id",CHAT_ID);d.append("photo",f);d.append("caption","رسید جدید - کاربر: "+u+" - پلن: "+p);
-  fetch("https://api.telegram.org/bot"+BOT_TOKEN+"/sendPhoto",{method:"POST",body:d})
-   .then(function(r){return r.json()})
-   .then(function(j){btn.disabled=false;if(j.ok){msg.textContent="رسید ارسال شد. منتظر پاسخ پشتیبانی باشید."}else{fallback("ارسال ناموفق بود.")}})
-   .catch(function(){btn.disabled=false;fallback("ارسال ناموفق بود.")});
+  var u=document.getElementById("rUser").value.trim();
+  var p=document.getElementById("rPlan").value;
+  var f=document.getElementById("rFile").files[0];
+
+  if(!u || !f){
+   msg.textContent="نام کاربری تلگرام و تصویر رسید را وارد کنید.";
+   return;
+  }
+
+  btn.disabled=true;
+  msg.textContent="در حال ارسال...";
+
+  var d=new FormData();
+  d.append("photo",f);
+  d.append("username",u);
+  d.append("plan",p);
+
+  fetch("https://long-dew-9e8a.arshia92837.workers.dev/",{
+   method:"POST",
+   body:d
+  })
+  .then(function(r){return r.json()})
+  .then(function(j){
+   btn.disabled=false;
+   if(j.ok){
+    msg.textContent="رسید ارسال شد. منتظر پاسخ پشتیبانی باشید.";
+   }else{
+    msg.textContent="ارسال ناموفق بود. لطفاً با پشتیبانی تماس بگیرید.";
+   }
+  })
+  .catch(function(){
+   btn.disabled=false;
+   msg.textContent="ارتباط با سرور برقرار نشد. دوباره تلاش کنید.";
+  });
  });
 })();
 </script>
