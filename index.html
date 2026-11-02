@@ -172,18 +172,48 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closePlanMod
 
 var BOT_TOKEN="PUT_BOT_TOKEN_IN_SECURE_WORKER",CHAT_ID="PUT_CHAT_ID_IN_SECURE_WORKER";
 (function(){
- var btn=document.getElementById("rBtn"),msg=document.getElementById("rMsg");
- var fallback=function(t){msg.innerHTML=t+' <a href="https://t.me/Arshia135784" target="_blank" rel="noopener">ارسال از طریق تلگرام</a>'};
+ var btn=document.getElementById("rBtn");
+ var msg=document.getElementById("rMsg");
+
+ var fallback=function(t){
+   msg.innerHTML=t+' <a href="https://t.me/Arshia135784" target="_blank" rel="noopener">ارسال از طریق تلگرام</a>';
+ };
+
  btn.addEventListener("click",function(){
-  var u=document.getElementById("rUser").value.trim(),p=document.getElementById("rPlan").value,f=document.getElementById("rFile").files[0];
-  if(!u||!f){msg.textContent="نام کاربری تلگرام و تصویر رسید را وارد کنید.";return}
-  if(BOT_TOKEN.indexOf("PUT_")===0){fallback("ارسال رسید هنوز به سرویس امن متصل نشده است.");return}
-  btn.disabled=true;msg.textContent="در حال ارسال...";
-  var d=new FormData();d.append("chat_id",CHAT_ID);d.append("photo",f);d.append("caption","رسید جدید - کاربر: "+u+" - پلن: "+p);
-  fetch("https://api.telegram.org/bot"+BOT_TOKEN+"/sendPhoto",{method:"POST",body:d})
+   var u=document.getElementById("rUser").value.trim();
+   var p=document.getElementById("rPlan").value;
+   var f=document.getElementById("rFile").files[0];
+
+   if(!u||!f){
+     msg.textContent="نام کاربری تلگرام و تصویر رسید را وارد کنید.";
+     return;
+   }
+
+   btn.disabled=true;
+   msg.textContent="در حال ارسال...";
+
+   var d=new FormData();
+   d.append("photo",f);
+   d.append("username",u);
+   d.append("plan",p);
+
+   fetch("https://long-dew-9e8a.arshia92837.workers.dev/",{
+     method:"POST",
+     body:d
+   })
    .then(function(r){return r.json()})
-   .then(function(j){btn.disabled=false;if(j.ok){msg.textContent="رسید ارسال شد. منتظر پاسخ پشتیبانی باشید."}else{fallback("ارسال ناموفق بود.")}})
-   .catch(function(){btn.disabled=false;fallback("ارسال ناموفق بود.")});
+   .then(function(j){
+     btn.disabled=false;
+     if(j.ok){
+       msg.textContent="رسید ارسال شد. منتظر پاسخ پشتیبانی باشید.";
+     }else{
+       fallback("ارسال ناموفق بود.");
+     }
+   })
+   .catch(function(){
+     btn.disabled=false;
+     fallback("ارسال ناموفق بود.");
+   });
  });
 })();
 </script>
