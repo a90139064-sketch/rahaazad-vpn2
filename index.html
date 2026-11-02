@@ -6,25 +6,35 @@
 <title>راه‌آزاد VPN | سریع، امن، پایدار</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
 <style> 
-  
-
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 48px;
-  padding: 12px 27px;
-  border: 1px solid #42dff5;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #35d9ee, #168acb);
+  display: inline-block;
+  background: #20c8e8;
   color: #061522;
-  font-weight: 900;
+  padding: 11px 24px;
+  border-radius: 12px;
+  font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 5px 18px #20c8e844;
-  transition: transform .2s, box-shadow .2s, filter .2s;
+  margin: 4px;
+  border: 1px solid #20c8e8;
+  box-shadow: 0 4px 12px #20c8e833;
+  transition: .2s ease;
 }
 
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.btn.o {
+  background: transparent;
+  color: #20c8e8;
+  border: 1px solid #20c8e8;
+  box-shadow: none;
+}
+
+.btn.o:hover {
+  background: #12334a;
+}
 .btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 9px 25px #20c8e866;
