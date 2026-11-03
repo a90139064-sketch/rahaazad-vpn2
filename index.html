@@ -15,7 +15,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn",Tah
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:rgba(6,9,18,.92);z-index:10}
 body::after{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(700px 480px at 90% -8%,rgba(34,211,238,.2),transparent 70%),radial-gradient(640px 520px at 0% 38%,rgba(139,92,246,.2),transparent 70%),radial-gradient(520px 420px at 80% 92%,rgba(244,114,182,.12),transparent 70%)}
 a{color:inherit;text-decoration:none}
-.w{max-width:1040px;margin:0 auto;padding:0 18px}
+.w{max-width:1040px;margiتعرفهlooouto;padding:0 18px}
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;padding-top:10px}
 nav .w{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px;width:calc(100% - 24px);border:1px solid var(--line);border-radius:18px;background:rgba(10,14,34,.72);backdrop-filter:blur(16px)}
 .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px}
@@ -228,25 +228,33 @@ if(window.IntersectionObserver&&!matchMedia("(prefers-reduced-motion: reduce)").
  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
  document.querySelectorAll("section h2,.sub,.grid>.c:not(.pr),details,.two>.c,.stats>div").forEach(function(el){var i=Array.prototype.indexOf.call(el.parentNode.children,el);el.style.setProperty("--d",(Math.min(i,5)*0.15)+"s");el.classList.add("rv");io.observe(el)});
 }
-function copyCard(el){
-  var t="6219861457404142";
-  var ok=function(){var old=el.textContent;el.textContent="کپی شد ✓";setTimeout(function(){el.textContent=old},1500)};
-  var fb=function(){var a=document.createElement("textarea");a.value=t;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok()}catch(e){}document.body.removeChild(a)};
-  try{navigator.clipboard.writeText(t).then(ok,fb)}catch(e){fb()}
-}
-(function(){
- var btn=document.getElementById("rBtn"),msg=document.getElementById("rMsg");
- var fallback=function(t){msg.innerHTML=t+' <a href="https://t.me/Arshia135784" target="_blank" rel="noopener">ارسال از طریق تلگرام</a>'};
- btn.addEventListener("click",function(){
-  var u=document.getElementById("rUser").value.trim(),p=document.getElementById("rPlan").value,f=document.getElementById("rFile").files[0];
-  if(!u||!f){msg.textContent="نام کاربری تلگرام و تصویر رسید را وارد کنید.";return}
-  if(BOT_TOKEN.indexOf("PUT_")===0){fallback("ارسال فرم هنوز فعال نشده است.");return}
-  btn.disabled=true;msg.textContent="در حال ارسال...";
-  var d=new FormData();d.append("chat_id",CHAT_ID);d.append("photo",f);d.append("caption","رسید جدید - کاربر: "+u+" - پلن: "+p);
-  fetch("https://api.telegram.org/bot"+BOT_TOKEN+"/sendPhoto",{method:"POST",body:d})
-   .then(function(r){return r.json()})
-   .then(function(j){btn.disabled=false;if(j.ok){msg.textContent="رسید ارسال شد. منتظر پاسخ پشتیبانی باشید."}else{fallback("ارسال ناموفق بود.")}})
-   .catch(function(){btn.disabled=false;fallback("ارسال ناموفق بود.")});
+   btn.disabled=true;
+  msg.textContent="در حال ارسال...";
+
+  var d=new FormData();
+  d.append("photo",f);
+  d.append("caption","رسید جدید - کاربر: "+u+" - پلن: "+p);
+
+  fetch("https://crimson-unit-89a4.a90139064.workers.dev/receipt",{
+    method:"POST",
+    body:d
+  })
+  .then(function(r){
+    if(!r.ok) throw new Error("ارسال ناموفق");
+    return r.json();
+  })
+  .then(function(j){
+    btn.disabled=false;
+    if(j.ok){
+      msg.textContent="رسید ارسال شد. منتظر پاسخ پشتیبانی باشید.";
+    }else{
+      fallback("ارسال ناموفق بود.");
+    }
+  })
+  .catch(function(){
+    btn.disabled=false;
+    fallback("ارسال ناموفق بود.");
+  });
  });
 })();
 </script>
