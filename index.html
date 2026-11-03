@@ -342,5 +342,61 @@ function copyCard(el){
   });
 })();
 </script>
+ <script>
+(function(){
+  var btn = document.getElementById("trackBtn");
+  var result = document.getElementById("trackResult");
+
+  btn.addEventListener("click", async function(){
+    var id = document.getElementById("trackOrderId").value.trim();
+    var code = document.getElementById("trackCode").value.trim();
+
+    if(!id || !code){
+      result.textContent = "هر دو کد را وارد کنید.";
+      return;
+    }
+
+    btn.disabled = true;
+    result.textContent = "در حال بررسی...";
+
+    try {
+      var url = "https://crimson-unit-89a4.a90139064.workers.dev/status?id="
+        + encodeURIComponent(id)
+        + "&code="
+        + encodeURIComponent(code);
+
+      var response = await fetch(url);
+      var data = await response.json();
+
+      if(!response.ok || !data.ok){
+        result.textContent = "سفارشی با این کدها پیدا نشد.";
+        return;
+      }
+
+      if(data.status === "pending"){
+        result.textContent = "وضعیت سفارش: در انتظار بررسی";
+
+      } else if(data.status === "rejected"){
+        result.textContent =
+          "وضعیت سفارش: رد شده\n\nپاسخ ادمین:\n" +
+          (data.adminReply || data.note || "توضیحی ثبت نشده است.");
+
+      } else if(data.status === "done"){
+        result.textContent =
+          "وضعیت سفارش: تأیید شده\n\nپاسخ ادمین و کانفیگ:\n" +
+          (data.adminReply || data.config || "هنوز پاسخی ثبت نشده است.");
+
+      } else {
+        result.textContent = "وضعیت سفارش: " + data.status;
+      }
+
+    } catch(error) {
+      result.textContent = "ارتباط برقرار نشد؛ دوباره تلاش کنید.";
+    } finally {
+      btn.disabled = false;
+    }
+  });
+})();
+ </script>
 </body>
 </html>
