@@ -105,7 +105,6 @@ body.hb footer{padding-bottom:110px}
 @keyframes sp{to{transform:rotate(360deg)}}
 @keyframes fy{50%{transform:translateY(-10px)}}
 @keyframes mq{to{transform:translateX(-50%)}}}
-
 </style>
 </head>
 <body>
@@ -188,6 +187,7 @@ body.hb footer{padding-bottom:110px}
 <footer><div class="w">راه‌آزاد VPN · پشتیبانی تلگرام <a href="https://t.me/Arshia135784" target="_blank" rel="noopener" dir="ltr" style="color:var(--c1)">@Arshia135784</a><br>© ۲۰۲۶ همه حقوق محفوظ است</div></footer>
 
 <div id="bar"><div class="in"><span id="bt" style="font-weight:700"></span><span><a class="btn o" href="#receipt">ارسال رسید</a> <a class="btn" id="bo" href="https://t.me/Arshia135784" target="_blank" rel="noopener">سفارش در تلگرام</a></span></div></div>
+
 <script>
 var PL=[["۲ هفته","","150","200","تست و کوتاه\u200cمدت"],["۱ ماهه","محبوب\u200cترین","250","300","انتخاب محبوب کاربران"],["۲ ماهه","مقرون\u200cبه\u200cصرفه","350","450","برای استفاده بلندمدت\u200cتر"],["۳ ماهه","بیشترین تخفیف","500","700","پلن سه\u200cماهه"]];
 var U=1,S=-1;
@@ -233,7 +233,7 @@ function copyCard(el){
   var fb=function(){var a=document.createElement("textarea");a.value=t;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok()}catch(e){}document.body.removeChild(a)};
   try{navigator.clipboard.writeText(t).then(ok,fb)}catch(e){fb()}
 }
- (function(){
+(function(){
   var btn = document.getElementById("rBtn");
   var msg = document.getElementById("rMsg");
 
@@ -278,125 +278,5 @@ function copyCard(el){
   });
 })();
 </script>
- <section id="orderTracking" dir="rtl" style="max-width:600px;margin:40px auto;padding:24px;background:#111329;border:1px solid #25264a;border-radius:20px;color:white;text-align:center">
-  <h2>پیگیری سفارش</h2>
-  <p>کد سفارش و کد پیگیری خود را وارد کنید.</p>
-
-  <input id="trackOrderId" placeholder="کد سفارش"
-    style="width:100%;box-sizing:border-box;padding:14px;margin:8px 0;border-radius:10px">
-
-  <input id="trackCode" placeholder="کد پیگیری"
-    style="width:100%;box-sizing:border-box;padding:14px;margin:8px 0;border-radius:10px">
-
-  <button id="trackBtn"
-    style="width:100%;padding:14px;margin-top:10px;border:0;border-radius:10px;background:#3420a0;color:white;font-weight:bold">
-    بررسی سفارش
-  </button>
-
-  <div id="trackResult" style="margin-top:20px;white-space:pre-wrap;overflow-wrap:anywhere"></div>
-</section>
-
-<script>
-(function(){
-  var btn = document.getElementById("trackBtn");
-  var result = document.getElementById("trackResult");
-
-  btn.addEventListener("click", async function(){
-    var id = document.getElementById("trackOrderId").value.trim();
-    var code = document.getElementById("trackCode").value.trim();
-
-    if(!id || !code){
-      result.textContent = "هر دو کد را وارد کنید.";
-      return;
-    }
-
-    btn.disabled = true;
-    result.textContent = "در حال بررسی...";
-
-    try {
-      var url = "https://crimson-unit-89a4.a90139064.workers.dev/status?id="
-        + encodeURIComponent(id) + "&code=" + encodeURIComponent(code);
-
-      var response = await fetch(url);
-      var data = await response.json();
-
-      if(!response.ok || !data.ok){
-        result.textContent = "سفارشی با این کدها پیدا نشد.";
-        return;
-      }
-
-      if(data.status === "pending"){
-        result.textContent = "وضعیت سفارش: در انتظار بررسی";
-      } else if(data.status === "rejected"){
-        result.textContent = "وضعیت سفارش: رد شده\n" + (data.note || "");
-      } else if(data.status === "done"){
-        result.textContent = "وضعیت سفارش: تأیید شده\n\nکانفیگ:\n" + (data.config || "هنوز کانفیگی ثبت نشده است.");
-      } else {
-        result.textContent = "وضعیت سفارش: " + data.status;
-      }
-    } catch(error) {
-      result.textContent = "ارتباط برقرار نشد؛ دوباره تلاش کنید.";
-    } finally {
-      btn.disabled = false;
-    }
-  });
-})();
-</script>
- <script>
-(function(){
-  var btn = document.getElementById("trackBtn");
-  var result = document.getElementById("trackResult");
-
-  btn.addEventListener("click", async function(){
-    var id = document.getElementById("trackOrderId").value.trim();
-    var code = document.getElementById("trackCode").value.trim();
-
-    if(!id || !code){
-      result.textContent = "هر دو کد را وارد کنید.";
-      return;
-    }
-
-    btn.disabled = true;
-    result.textContent = "در حال بررسی...";
-
-    try {
-      var url = "https://crimson-unit-89a4.a90139064.workers.dev/status?id="
-        + encodeURIComponent(id)
-        + "&code="
-        + encodeURIComponent(code);
-
-      var response = await fetch(url);
-      var data = await response.json();
-
-      if(!response.ok || !data.ok){
-        result.textContent = "سفارشی با این کدها پیدا نشد.";
-        return;
-      }
-
-      if(data.status === "pending"){
-        result.textContent = "وضعیت سفارش: در انتظار بررسی";
-
-      } else if(data.status === "rejected"){
-        result.textContent =
-          "وضعیت سفارش: رد شده\n\nپاسخ ادمین:\n" +
-          (data.adminReply || data.note || "توضیحی ثبت نشده است.");
-
-      } else if(data.status === "done"){
-        result.textContent =
-          "وضعیت سفارش: تأیید شده\n\nپاسخ ادمین و کانفیگ:\n" +
-          (data.adminReply || data.config || "هنوز پاسخی ثبت نشده است.");
-
-      } else {
-        result.textContent = "وضعیت سفارش: " + data.status;
-      }
-
-    } catch(error) {
-      result.textContent = "ارتباط برقرار نشد؛ دوباره تلاش کنید.";
-    } finally {
-      btn.disabled = false;
-    }
-  });
-})();
- </script>
 </body>
-</html>
+</html>     
