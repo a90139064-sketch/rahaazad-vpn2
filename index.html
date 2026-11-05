@@ -2,1138 +2,1005 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#050914">
-<title>راه‌آزاد VPN | Gaming Network</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d1b">
+  <title>راه‌آزاد VPN | اتصال سریع و پایدار</title>
+  <meta name="description" content="خرید سرویس راه‌آزاد VPN با تعرفه‌های متنوع و پشتیبانی تلگرام">
 
-<style>
-:root{
- --bg:#050914;
- --bg2:#080f20;
- --card:#0c172b;
- --blue:#168cff;
- --cyan:#00d9ff;
- --purple:#674bff;
- --text:#f5f8ff;
- --muted:#91a5c3;
- --line:rgba(92,164,255,.16);
- --glow:0 0 35px rgba(0,140,255,.18);
- --radius:20px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:100px}
-body{
- background:var(--bg);
- color:var(--text);
- font-family:"Vazirmatn",Tahoma,sans-serif;
- line-height:1.9;
- overflow-x:hidden;
-}
-a{text-decoration:none;color:inherit}
-button,input,select{font-family:inherit}
-button{cursor:pointer}
-::selection{background:var(--blue);color:white}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-/* BACKGROUND */
-body:before{
- content:"";
- position:fixed;
- inset:0;
- z-index:-2;
- background:
- radial-gradient(ellipse at 80% 0%,rgba(0,140,255,.18),transparent 40%),
- radial-gradient(ellipse at 0% 55%,rgba(67,65,255,.12),transparent 42%),
- radial-gradient(ellipse at 90% 100%,rgba(0,217,255,.08),transparent 40%);
-}
-body:after{
- content:"";
- position:fixed;
- inset:0;
- z-index:-1;
- pointer-events:none;
- opacity:.13;
- background-image:
- linear-gradient(rgba(55,145,255,.12) 1px,transparent 1px),
- linear-gradient(90deg,rgba(55,145,255,.12) 1px,transparent 1px);
- background-size:55px 55px;
- mask-image:linear-gradient(to bottom,black,transparent 85%);
-}
-.w{width:min(1120px,calc(100% - 36px));margin:auto}
+  <style>
+    :root {
+      --bg: #080d1b;
+      --surface: #101a2d;
+      --surface2: #14213a;
+      --blue: #3987ff;
+      --cyan: #48e0ff;
+      --text: #f4f7ff;
+      --muted: #9baac2;
+      --border: rgba(130,170,255,.16);
+      --green: #39dda1;
+    }
 
-/* NAVIGATION */
-nav{
- position:sticky;
- top:0;
- z-index:100;
- padding:12px 0;
- background:rgba(5,9,20,.75);
- backdrop-filter:blur(20px);
- border-bottom:1px solid rgba(255,255,255,.04);
-}
-.nav{
- display:flex;
- align-items:center;
- justify-content:space-between;
- min-height:55px;
- gap:15px;
-}
-.brand{
- display:flex;
- align-items:center;
- gap:10px;
- font-weight:900;
- font-size:19px;
-}
-.logo{
- width:42px;
- height:42px;
- display:grid;
- place-items:center;
- border-radius:13px;
- background:linear-gradient(135deg,#087cff,#00d9ff);
- box-shadow:0 0 25px rgba(0,140,255,.4);
- color:#001329;
- font-size:23px;
-}
-.navlinks{display:flex;gap:27px;color:var(--muted);font-size:14px}
-.navlinks a{transition:.2s}
-.navlinks a:hover{color:var(--cyan)}
-.nav-actions{display:flex;gap:10px;align-items:center}
-.menu{
- display:none;
- background:var(--card);
- color:white;
- border:1px solid var(--line);
- border-radius:12px;
- padding:8px 13px;
- font-size:21px;
-}
-.btn{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- gap:8px;
- border:1px solid transparent;
- border-radius:13px;
- padding:11px 22px;
- background:linear-gradient(110deg,#087cff,#00c8ff);
- color:white;
- font-size:14px;
- font-weight:800;
- transition:.25s;
- box-shadow:0 5px 25px rgba(0,125,255,.18);
-}
-.btn:hover{
- transform:translateY(-3px);
- box-shadow:0 8px 35px rgba(0,150,255,.4);
-}
-.btn.outline{
- background:rgba(255,255,255,.035);
- border-color:var(--line);
- color:var(--text);
- box-shadow:none;
-}
-.btn.large{padding:14px 30px;font-size:15px}
+    * { box-sizing: border-box; }
 
-/* HERO */
-.hero{
- min-height:570px;
- display:grid;
- grid-template-columns:1.1fr .9fr;
- align-items:center;
- gap:35px;
- padding:65px 0 45px;
-}
-.eyebrow{
- display:inline-flex;
- align-items:center;
- gap:9px;
- padding:7px 14px;
- border:1px solid rgba(0,195,255,.25);
- border-radius:50px;
- color:var(--cyan);
- background:rgba(0,140,255,.07);
- font-size:12px;
- font-weight:800;
-}
-.dot{
- width:8px;height:8px;
- border-radius:50%;
- background:#00e5a0;
- box-shadow:0 0 12px #00e5a0;
-}
-h1{
- font-size:clamp(36px,5vw,65px);
- line-height:1.4;
- font-weight:900;
- margin:20px 0;
-}
-.gradient{
- background:linear-gradient(100deg,#00dcff,#168cff,#9274ff);
- background-clip:text;
- -webkit-background-clip:text;
- color:transparent;
-}
-.hero p{
- color:var(--muted);
- max-width:520px;
- font-size:16px;
- margin-bottom:27px;
-}
-.hero-buttons{display:flex;flex-wrap:wrap;gap:12px}
-.hero-stats{
- display:flex;
- gap:35px;
- margin-top:40px;
- padding-top:25px;
- border-top:1px solid var(--line);
-}
-.stat b{display:block;font-size:24px;font-weight:900;color:white}
-.stat span{font-size:12px;color:var(--muted)}
-.hero-art{
- position:relative;
- min-height:420px;
- display:grid;
- place-items:center;
-}
-.orbit{
- position:absolute;
- width:330px;height:330px;
- border:1px solid rgba(0,145,255,.25);
- border-radius:50%;
- box-shadow:0 0 50px rgba(0,120,255,.08),inset 0 0 50px rgba(0,120,255,.05);
-}
-.orbit.two{width:250px;height:250px;border-style:dashed;animation:spin 30s linear infinite}
-.orbit.three{width:390px;height:390px;border-color:rgba(0,210,255,.1)}
-.shield{
- width:145px;height:145px;
- display:grid;
- place-items:center;
- border-radius:38px;
- background:linear-gradient(140deg,#087cff,#00d9ff);
- color:#031326;
- font-size:70px;
- box-shadow:0 0 60px rgba(0,150,255,.55),0 0 130px rgba(0,130,255,.2);
- animation:float 4s ease-in-out infinite;
-}
-.float-tag{
- position:absolute;
- padding:9px 17px;
- border:1px solid rgba(0,160,255,.25);
- background:rgba(8,21,43,.9);
- border-radius:12px;
- color:#c9eaff;
- font-size:13px;
- font-weight:800;
- box-shadow:var(--glow);
-}
-.t1{top:12%;right:5%}
-.t2{bottom:19%;left:1%}
-.t3{bottom:7%;right:20%}
+    html { scroll-behavior: smooth; }
 
-/* TICKER */
-.ticker{
- border-block:1px solid var(--line);
- background:rgba(0,130,255,.035);
- overflow:hidden;
- padding:14px 0;
-}
-.ticker-track{
- display:flex;
- width:max-content;
- gap:45px;
- animation:marquee 27s linear infinite;
- color:#9db5d4;
- font-size:13px;
- font-weight:700;
-}
-.ticker-track span:before{content:"✦";color:var(--cyan);margin-left:12px}
+    body {
+      margin: 0;
+      font-family: "Vazirmatn", sans-serif;
+      background:
+        radial-gradient(ellipse at 85% 5%, rgba(37,104,255,.18), transparent 35%),
+        radial-gradient(ellipse at 5% 40%, rgba(0,210,255,.09), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
 
-/* SECTION */
-section{padding:75px 0}
-.section-head{text-align:center;margin-bottom:35px}
-.overline{
- color:var(--cyan);
- font-size:11px;
- font-weight:900;
- letter-spacing:4px;
-}
-h2{
- font-size:clamp(25px,4vw,36px);
- font-weight:900;
- margin:5px 0;
-}
-.description{color:var(--muted);font-size:14px;margin-top:8px}
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
 
-/* CARDS */
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:17px;
-}
-.card{
- position:relative;
- overflow:hidden;
- padding:24px;
- border-radius:var(--radius);
- background:linear-gradient(145deg,rgba(14,32,59,.92),rgba(7,16,32,.94));
- border:1px solid var(--line);
- transition:.3s;
-}
-.card:before{
- content:"";
- position:absolute;
- top:-100px;
- right:-100px;
- width:190px;height:190px;
- border-radius:50%;
- background:rgba(0,135,255,.1);
- filter:blur(40px);
- pointer-events:none;
-}
-.card:hover{
- transform:translateY(-7px);
- border-color:rgba(0,170,255,.5);
- box-shadow:0 15px 40px rgba(0,90,255,.12);
-}
-.icon{
- width:53px;height:53px;
- display:grid;
- place-items:center;
- border-radius:15px;
- background:linear-gradient(140deg,rgba(0,140,255,.2),rgba(0,215,255,.08));
- border:1px solid rgba(0,170,255,.2);
- font-size:25px;
-}
-.card h3{font-size:17px;margin:13px 0 5px}
-.card p{color:var(--muted);font-size:13px}
+    .container {
+      width: min(1120px, calc(100% - 36px));
+      margin: auto;
+    }
 
-/* PRICING */
-.segment{
- display:flex;
- justify-content:center;
- width:max-content;
- max-width:100%;
- margin:0 auto 40px;
- padding:5px;
- background:#0b172c;
- border:1px solid var(--line);
- border-radius:15px;
-}
-.segment button{
- border:0;
- background:transparent;
- color:var(--muted);
- padding:9px 27px;
- border-radius:11px;
- font-size:13px;
- font-weight:800;
-}
-.segment button.active{
- color:white;
- background:linear-gradient(110deg,#087cff,#00bfff);
- box-shadow:0 0 20px rgba(0,140,255,.2);
-}
-.pricing-card{
- text-align:center;
- padding:27px 20px;
-}
-.pricing-card.featured{
- border-color:#168cff;
- box-shadow:0 0 35px rgba(0,120,255,.13);
-}
-.popular{
- display:inline-block;
- border-radius:50px;
- padding:3px 14px;
- background:rgba(0,145,255,.16);
- color:#47c7ff;
- border:1px solid rgba(0,170,255,.25);
- font-size:11px;
- font-weight:900;
-}
-.price{
- font-size:39px;
- font-weight:900;
- margin:17px 0 3px;
- color:white;
-}
-.price small{font-size:13px;color:var(--muted);font-weight:500}
-.price-desc{font-size:12px;color:var(--muted);margin-bottom:17px}
-.pricing-card .btn{width:100%;margin-top:13px}
-.pricing-card.selected{
- outline:2px solid var(--cyan);
- outline-offset:3px;
-}
-.price-icon{
- font-size:30px;
- margin-bottom:5px;
-}
-.discount{
- color:#00d9ff;
- font-size:11px;
- margin-top:8px;
-}
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8,13,27,.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
 
-/* STEPS */
-.steps{counter-reset:step}
-.step-card{padding:26px}
-.step-number{
- width:45px;height:45px;
- border-radius:13px;
- display:grid;
- place-items:center;
- background:linear-gradient(135deg,#087cff,#00cfff);
- font-weight:900;
- color:white;
- font-size:20px;
- box-shadow:0 0 20px rgba(0,140,255,.2);
-}
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-/* RECEIPT */
-.two{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:18px;
-}
-.center{text-align:center}
-.bank-number{
- direction:ltr;
- display:inline-block;
- padding:7px 20px;
- margin:15px 0;
- border:1px dashed var(--cyan);
- border-radius:11px;
- background:rgba(0,150,255,.08);
- color:var(--cyan);
- font-size:21px;
- font-weight:900;
-}
-.form{
- display:grid;
- gap:12px;
- margin-top:15px;
-}
-.form input,.form select{
- width:100%;
- border:1px solid var(--line);
- background:#081426;
- color:white;
- border-radius:12px;
- padding:12px 14px;
- font-size:13px;
- outline:none;
-}
-.form input:focus,.form select:focus{
- border-color:var(--blue);
- box-shadow:0 0 15px rgba(0,130,255,.12);
-}
-.form input::placeholder{color:#7186a4}
-.form select option{background:#081426}
-.preview{
- display:none;
- max-width:100%;
- max-height:180px;
- margin:auto;
- border-radius:12px;
- border:1px solid var(--line);
-}
-.message{
- text-align:center;
- min-height:25px;
- color:var(--cyan);
- font-size:12px;
- overflow-wrap:anywhere;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 19px;
+      font-weight: 900;
+    }
 
-/* FAQ */
-details{
- background:rgba(12,27,49,.8);
- border:1px solid var(--line);
- border-radius:15px;
- padding:16px 20px;
- margin-bottom:12px;
- transition:.2s;
-}
-details[open]{border-color:rgba(0,155,255,.45)}
-summary{
- cursor:pointer;
- font-size:14px;
- font-weight:800;
- list-style:none;
-}
-summary:after{
- content:"+";
- float:left;
- color:var(--cyan);
- font-size:20px;
-}
-details[open] summary:after{content:"−"}
-details p{font-size:13px;color:var(--muted);margin-top:12px}
+    .brand-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #061225;
+      font-size: 22px;
+      box-shadow: 0 0 25px rgba(57,135,255,.3);
+    }
 
-/* FOOTER */
-footer{
- border-top:1px solid var(--line);
- background:rgba(3,9,20,.7);
- padding:40px 0 30px;
- text-align:center;
- color:var(--muted);
- font-size:12px;
-}
-.footer-brand{font-size:21px;font-weight:900;color:white;margin-bottom:8px}
-.footer-link{color:var(--cyan);direction:ltr;display:inline-block}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-/* FLOATING ORDER */
-#bar{
- display:none;
- position:fixed;
- bottom:0;left:0;right:0;
- z-index:120;
- padding:12px 18px calc(12px + env(safe-area-inset-bottom));
- background:rgba(5,14,30,.96);
- border-top:1px solid rgba(0,160,255,.3);
- backdrop-filter:blur(18px);
- box-shadow:0 -10px 40px rgba(0,0,0,.3);
-}
-#bar.show{display:block}
-.bar-inner{
- max-width:1120px;
- margin:auto;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:10px;
- flex-wrap:wrap;
- font-size:13px;
-}
-body.hasbar footer{padding-bottom:115px}
+    .nav-links a:hover { color: var(--cyan); }
 
-/* REVEAL */
-.reveal{
- opacity:0;
- transform:translateY(25px);
- transition:opacity .7s,transform .7s;
-}
-.reveal.visible{opacity:1;transform:none}
+    .btn {
+      border: 0;
+      border-radius: 13px;
+      padding: 12px 20px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: .25s;
+    }
 
-/* ANIMATIONS */
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes float{50%{transform:translateY(-13px)}}
-@keyframes marquee{to{transform:translateX(-50%)}}
+    .btn-primary {
+      color: #061225;
+      background: linear-gradient(110deg, var(--cyan), #5a91ff);
+      box-shadow: 0 8px 25px rgba(57,135,255,.2);
+    }
 
-/* RESPONSIVE */
-@media(max-width:850px){
- .hero{grid-template-columns:1fr;text-align:center;padding-top:45px}
- .hero p{margin-inline:auto}
- .hero-buttons,.hero-stats{justify-content:center}
- .hero-art{min-height:330px;order:-1}
- .navlinks{gap:14px}
-}
-@media(max-width:650px){
- .w{width:calc(100% - 28px)}
- .navlinks{
-  display:none;
-  position:absolute;
-  top:72px;right:14px;left:14px;
-  padding:20px;
-  flex-direction:column;
-  background:#091426;
-  border:1px solid var(--line);
-  border-radius:16px;
- }
- .navlinks.open{display:flex}
- .menu{display:block}
- .nav-actions>.btn{display:none}
- .hero{padding-top:25px;gap:5px;min-height:auto}
- .hero-art{min-height:270px;transform:scale(.78)}
- h1{font-size:37px}
- .hero p{font-size:14px}
- .hero-stats{gap:20px}
- .stat b{font-size:20px}
- section{padding:52px 0}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
- .card{padding:17px}
- .card h3{font-size:14px}
- .card p{font-size:12px}
- .two{grid-template-columns:1fr}
- .bar-inner{justify-content:center;text-align:center}
- #bar .bar-buttons{display:flex;width:100%;gap:8px}
- #bar .btn{flex:1;padding:9px 8px;font-size:12px}
-}
-@media(max-width:380px){
- .grid{grid-template-columns:1fr}
- .hero-stats{gap:12px}
- .segment button{padding:9px 17px}
-}
-@media(prefers-reduced-motion:reduce){
- *,*:before,*:after{
-  animation:none!important;
-  transition:none!important;
-  scroll-behavior:auto!important;
- }
- .reveal{opacity:1;transform:none}
-}
-</style>
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(57,135,255,.35);
+    }
+
+    .btn-outline {
+      color: var(--text);
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+    }
+
+    .hero {
+      padding: 100px 0 75px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid rgba(72,224,255,.2);
+      background: rgba(72,224,255,.07);
+      color: var(--cyan);
+      border-radius: 50px;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.45;
+      margin: 20px 0;
+      font-weight: 900;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), #6796ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      max-width: 570px;
+      font-size: 15px;
+      line-height: 2.2;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .hero-visual {
+      min-height: 340px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .glow {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: #176cff;
+      filter: blur(100px);
+      opacity: .28;
+    }
+
+    .shield {
+      width: 220px;
+      height: 250px;
+      display: grid;
+      place-items: center;
+      font-size: 100px;
+      background: linear-gradient(145deg, rgba(72,224,255,.14), rgba(57,135,255,.08));
+      border: 1px solid rgba(72,224,255,.35);
+      border-radius: 45% 45% 35% 35%;
+      box-shadow: 0 0 70px rgba(57,135,255,.18), inset 0 0 35px rgba(72,224,255,.08);
+      transform: rotate(-5deg);
+      animation: float 5s ease-in-out infinite;
+      position: relative;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 13px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      padding: 17px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.025);
+      border-radius: 16px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 15px;
+      color: var(--cyan);
+    }
+
+    .stat span {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    section { padding: 75px 0; }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading small {
+      color: var(--cyan);
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      font-size: 31px;
+      margin: 5px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 15px;
+    }
+
+    .feature, .price-card, .step, .payment-card, .faq-item {
+      background: linear-gradient(145deg, rgba(20,33,58,.88), rgba(13,22,40,.88));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .feature {
+      padding: 23px 18px;
+      transition: .25s;
+    }
+
+    .feature:hover, .price-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(72,224,255,.42);
+    }
+
+    .feature-icon {
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .feature h3 { font-size: 15px; margin: 5px 0; }
+    .feature p { color: var(--muted); font-size: 12px; margin: 0; }
+
+    .pricing-section {
+      background: linear-gradient(180deg, transparent, rgba(30,74,145,.08), transparent);
+    }
+
+    .toggle-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 25px 0 32px;
+    }
+
+    .toggle {
+      padding: 6px;
+      display: inline-flex;
+      background: #111d33;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      gap: 5px;
+    }
+
+    .toggle button {
+      color: var(--muted);
+      background: transparent;
+      border: 0;
+      padding: 10px 23px;
+      border-radius: 11px;
+      font-weight: 700;
+    }
+
+    .toggle button.active {
+      color: #061225;
+      background: linear-gradient(110deg,var(--cyan),#6796ff);
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 15px;
+    }
+
+    .price-card {
+      padding: 24px 18px;
+      position: relative;
+      transition: .25s;
+    }
+
+    .price-card.popular {
+      border-color: rgba(72,224,255,.55);
+      box-shadow: 0 0 35px rgba(57,135,255,.12);
+    }
+
+    .popular-label {
+      position: absolute;
+      top: -13px;
+      left: 17px;
+      padding: 4px 12px;
+      border-radius: 30px;
+      background: linear-gradient(90deg,var(--cyan),#6796ff);
+      color: #061225;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .plan-name { color: var(--muted); font-size: 13px; }
+    .plan-duration { font-size: 21px; font-weight: 900; margin: 7px 0; }
+
+    .price {
+      font-size: 29px;
+      font-weight: 900;
+      color: var(--cyan);
+      margin: 12px 0 0;
+    }
+
+    .price-unit {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .plan-details {
+      border-top: 1px solid var(--border);
+      margin-top: 17px;
+      padding-top: 13px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .plan-details div { margin: 7px 0; }
+
+    .price-card .btn {
+      width: 100%;
+      margin-top: 17px;
+      font-size: 12px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 17px;
+    }
+
+    .step { padding: 24px; }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      color: var(--cyan);
+      background: rgba(72,224,255,.1);
+      border-radius: 13px;
+      font-weight: 900;
+    }
+
+    .step h3 { font-size: 15px; }
+    .step p { color: var(--muted); font-size: 12px; }
+
+    .payment-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 18px;
+    }
+
+    .payment-card { padding: 25px; }
+
+    .payment-card h3 { margin-top: 0; }
+
+    .card-number {
+      direction: ltr;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: var(--cyan);
+      background: rgba(72,224,255,.07);
+      border: 1px dashed rgba(72,224,255,.3);
+      border-radius: 13px;
+      padding: 14px 8px;
+      margin: 15px 0;
+    }
+
+    .copy-btn {
+      width: 100%;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px;
+      border-radius: 11px;
+    }
+
+    .muted { color: var(--muted); font-size: 12px; }
+
+    .form-group { margin: 13px 0; }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 7px;
+      color: #cbd8ec;
+    }
+
+    .form-control {
+      width: 100%;
+      color: var(--text);
+      background: #0a1426;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 13px;
+      outline: none;
+    }
+
+    .form-control:focus { border-color: var(--cyan); }
+    .form-control option { background: #101a2d; }
+
+    input[type="file"] { font-size: 12px; }
+
+    .submit-btn { width: 100%; margin-top: 10px; }
+
+    .form-message {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--cyan);
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: auto;
+      display: grid;
+      gap: 11px;
+    }
+
+    .faq-item { overflow: hidden; }
+
+    .faq-question {
+      width: 100%;
+      padding: 17px 19px;
+      border: 0;
+      color: var(--text);
+      background: transparent;
+      display: flex;
+      justify-content: space-between;
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .faq-answer {
+      display: none;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 0 19px 17px;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-question span { color: var(--cyan); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .telegram-link { color: var(--cyan); font-weight: 800; }
+
+    .mobile-order {
+      display: none;
+      position: fixed;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      z-index: 60;
+      padding: 10px;
+      background: rgba(12,22,40,.94);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 10px 35px #0008;
+    }
+
+    .mobile-order .btn { width: 100%; }
+
+    @media(max-width:850px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-description { margin: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { min-height: 250px; }
+      .shield { width: 170px; height: 190px; font-size: 75px; }
+      .features { grid-template-columns: repeat(2,1fr); }
+      .price-grid { grid-template-columns: repeat(2,1fr); }
+      .payment-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media(max-width:540px) {
+      .container { width: min(100% - 26px, 1120px); }
+      .hero { padding: 65px 0 45px; }
+      section { padding: 55px 0; }
+      .stats { gap: 7px; }
+      .stat { padding: 12px 5px; }
+      .stat strong { font-size: 12px; }
+      .stat span { font-size: 10px; }
+      .features { gap: 9px; }
+      .feature { padding: 17px 13px; }
+      .price-grid { gap: 10px; }
+      .price-card { padding: 20px 13px; }
+      .price { font-size: 24px; }
+      .plan-duration { font-size: 18px; }
+      .steps { grid-template-columns: 1fr; }
+      .section-heading h2 { font-size: 26px; }
+      .mobile-order { display: block; }
+      body { padding-bottom: 75px; }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
- <div class="w nav">
-  <a class="brand" href="#home">
-   <span class="logo">⚡</span>
-   <span>راه‌آزاد <span class="gradient">VPN</span></span>
-  </a>
+<header class="navbar">
+  <div class="container nav-inner">
+    <a class="brand" href="#">
+      <span class="brand-icon">✦</span>
+      <span>راه‌آزاد <span class="gradient-text">VPN</span></span>
+    </a>
 
-  <div class="navlinks" id="navlinks">
-   <a href="#home">صفحه اصلی</a>
-   <a href="#features">امکانات</a>
-   <a href="#plans">تعرفه‌ها</a>
-   <a href="#steps">مراحل خرید</a>
-   <a href="#receipt">ارسال رسید</a>
-   <a href="#faq">سوالات</a>
+    <nav class="nav-links">
+      <a href="#features">امکانات</a>
+      <a href="#pricing">تعرفه‌ها</a>
+      <a href="#steps">مراحل خرید</a>
+      <a href="#payment">ارسال رسید</a>
+      <a href="#faq">سوالات</a>
+    </nav>
+
+    <a class="btn btn-primary" href="https://t.me/Arshia135784" target="_blank">
+      پشتیبانی تلگرام ↗
+    </a>
   </div>
-
-  <div class="nav-actions">
-   <button class="menu" id="menu" aria-label="باز کردن منو">☰</button>
-   <a class="btn" href="https://t.me/Arshia135784" target="_blank" rel="noopener">پشتیبانی ↗</a>
-  </div>
- </div>
-</nav>
-
-<main class="w">
-
-<!-- HERO -->
-<header class="hero" id="home">
-
- <div>
-  <span class="eyebrow"><span class="dot"></span> شبکه پرسرعت راه‌آزاد فعال است</span>
-
-  <h1>
-   محدودیت‌ها رو کنار بزن،
-   <span class="gradient">آزادانه متصل شو!</span>
-  </h1>
-
-  <p>
-   با راه‌آزاد VPN تجربه‌ای سریع و پایدار داشته باش.
-   پلن موردنظرت رو انتخاب کن و برای دریافت کانفیگ
-   از پشتیبانی مستقیم ما کمک بگیر.
-  </p>
-
-  <div class="hero-buttons">
-   <a class="btn large" href="#plans">مشاهده تعرفه‌ها ←</a>
-   <a class="btn outline large" href="https://t.me/Arshia135784" target="_blank" rel="noopener">ارتباط با پشتیبانی</a>
-  </div>
-
-  <div class="hero-stats">
-   <div class="stat"><b>۲۴/۷</b><span>پشتیبانی</span></div>
-   <div class="stat"><b>∞</b><span>ترافیک نامحدود</span></div>
-   <div class="stat"><b>۱ یا ۲</b><span>کاربر هر کانفیگ</span></div>
-  </div>
- </div>
-
- <div class="hero-art" aria-hidden="true">
-  <div class="orbit three"></div>
-  <div class="orbit"></div>
-  <div class="orbit two"></div>
-  <div class="shield">⚡</div>
-  <span class="float-tag t1">⚡ سرعت بالا</span>
-  <span class="float-tag t2">◈ امنیت اتصال</span>
-  <span class="float-tag t3">✓ پایداری</span>
- </div>
-
 </header>
 
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">
+          <span class="pulse"></span>
+          اتصال سریع · ترافیک نامحدود
+        </div>
+
+        <h1>
+          اینترنت بدون مرز<br>
+          با <span class="gradient-text">راه‌آزاد VPN</span>
+        </h1>
+
+        <p class="hero-description">
+          تجربه‌ای سریع و پایدار برای وب‌گردی و استفاده روزمره.
+          پلن مناسب خودت رو انتخاب کن و برای دریافت راهنمایی با پشتیبانی در ارتباط باش.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#pricing" class="btn btn-primary">مشاهده تعرفه‌ها ←</a>
+          <a href="https://t.me/Arshia135784" target="_blank" class="btn btn-outline">
+            ارتباط با پشتیبانی
+          </a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>۲۴/۷</strong>
+            <span>پشتیبانی تلگرام</span>
+          </div>
+          <div class="stat">
+            <strong>نامحدود</strong>
+            <span>ترافیک پلن‌ها</span>
+          </div>
+          <div class="stat">
+            <strong>۱ یا ۲</strong>
+            <span>کاربر برای هر پلن</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="glow"></div>
+        <div class="shield">🛡️</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <div class="section-heading">
+        <small>WHY RAHA AZAD</small>
+        <h2>یک تجربه ساده و روان</h2>
+        <p>امکانات سرویس را در یک نگاه ببین</p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>سرعت بالا</h3>
+          <p>اتصال مناسب برای وب‌گردی و استفاده روزمره.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🛡️</div>
+          <h3>اتصال امن</h3>
+          <p>توجه به امنیت ارتباط و حفظ حریم خصوصی.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">∞</div>
+          <h3>ترافیک نامحدود</h3>
+          <p>بدون سقف حجمی در پلن‌های اعلام‌شده.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💬</div>
+          <h3>پشتیبانی مستقیم</h3>
+          <p>ارتباط و دریافت راهنمایی از طریق تلگرام.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-heading">
+        <small>PRICING</small>
+        <h2>تعرفه‌های راه‌آزاد</h2>
+        <p>تعداد کاربر رو انتخاب کن و پلن موردنظرت رو ببین.</p>
+      </div>
+
+      <div class="toggle-wrap">
+        <div class="toggle">
+          <button class="active" data-users="1">تک‌کاربر</button>
+          <button data-users="2">۲ کاربر</button>
+        </div>
+      </div>
+
+      <div class="price-grid" id="priceGrid"></div>
+    </div>
+  </section>
+
+  <section id="steps">
+    <div class="container">
+      <div class="section-heading">
+        <small>HOW IT WORKS</small>
+        <h2>خرید در سه مرحله</h2>
+        <p>ساده و سریع، بدون مراحل پیچیده</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">۱</div>
+          <h3>انتخاب پلن</h3>
+          <p>مدت و تعداد کاربر رو انتخاب کن و پلن مناسب رو مشخص کن.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">۲</div>
+          <h3>پرداخت و ارسال رسید</h3>
+          <p>پرداخت رو انجام بده و تصویر رسید رو از فرم همین صفحه ارسال کن.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">۳</div>
+          <h3>دریافت راهنمای اتصال</h3>
+          <p>پس از بررسی و تأیید پرداخت، برای دریافت اطلاعات با پشتیبانی هماهنگ کن.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="payment">
+    <div class="container">
+      <div class="section-heading">
+        <small>PAYMENT</small>
+        <h2>پرداخت و ارسال رسید</h2>
+        <p>پس از پرداخت، اطلاعات رسید رو از طریق فرم ارسال کن.</p>
+      </div>
+
+      <div class="payment-grid">
+        <div class="payment-card">
+          <h3>💳 اطلاعات پرداخت</h3>
+          <p class="muted">شماره کارت (برای کپی لمس کنید)</p>
+          <div class="card-number" id="cardNumber">6219-8614-5740-4142</div>
+          <button class="copy-btn" onclick="copyCard()">کپی شماره کارت</button>
+          <p class="muted" style="margin-top:18px">به نام: عرشیا حسین پور</p>
+        </div>
+
+        <div class="payment-card">
+          <h3>📨 ارسال تصویر رسید</h3>
+
+          <form id="receiptForm">
+            <div class="form-group">
+              <label for="telegramUser">نام کاربری تلگرام</label>
+              <input class="form-control" id="telegramUser" name="username"
+                     placeholder="مثلاً @name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="selectedPlan">پلن خریداری‌شده</label>
+              <select class="form-control" id="selectedPlan" name="plan" required>
+                <option value="">انتخاب پلن</option>
+                <option value="۲ هفته - تک‌کاربر">۲ هفته - تک‌کاربر</option>
+                <option value="۱ ماه - تک‌کاربر">۱ ماه - تک‌کاربر</option>
+                <option value="۲ ماه - تک‌کاربر">۲ ماه - تک‌کاربر</option>
+                <option value="۳ ماه - تک‌کاربر">۳ ماه - تک‌کاربر</option>
+                <option value="۲ هفته - دو کاربر">۲ هفته - دو کاربر</option>
+                <option value="۱ ماه - دو کاربر">۱ ماه - دو کاربر</option>
+                <option value="۲ ماه - دو کاربر">۲ ماه - دو کاربر</option>
+                <option value="۳ ماه - دو کاربر">۳ ماه - دو کاربر</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="receiptFile">تصویر رسید پرداخت</label>
+              <input class="form-control" type="file" id="receiptFile"
+                     name="receipt" accept="image/*" required>
+            </div>
+
+            <button class="btn btn-primary submit-btn" type="submit" id="submitBtn">
+              ارسال رسید
+            </button>
+
+            <div class="form-message" id="formMessage" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <div class="section-heading">
+        <small>FAQ</small>
+        <h2>سوالات متداول</h2>
+        <p>پاسخ چند سوال رایج درباره سرویس</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            تفاوت تک‌کاربر و ۲ کاربر چیه؟
+            <span>＋</span>
+          </button>
+          <div class="faq-answer">
+            تعداد افرادی که می‌تونن از یک پلن استفاده کنن متفاوته.
+            در پلن دو کاربر، استفاده برای دو نفر در نظر گرفته شده.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            کانفیگ چطور تحویل داده می‌شه؟
+            <span>＋</span>
+          </button>
+          <div class="faq-answer">
+            پس از بررسی و تأیید پرداخت، برای هماهنگی دریافت اطلاعات و راهنمای اتصال
+            از طریق تلگرام با پشتیبانی در ارتباط باش.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            روش پرداخت چیه؟
+            <span>＋</span>
+          </button>
+          <div class="faq-answer">
+            اطلاعات کارت در بخش پرداخت قرار داده شده است.
+            بعد از پرداخت، تصویر رسید رو از همین صفحه ارسال کن.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            اگر برای اتصال سوال داشتم چیکار کنم؟
+            <span>＋</span>
+          </button>
+          <div class="faq-answer">
+            از طریق لینک پشتیبانی تلگرام پیام بده تا راهنمایی‌ات کنن.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<!-- TICKER -->
-<div class="ticker">
- <div class="ticker-track">
-  <span>اتصال سریع</span>
-  <span>ترافیک نامحدود</span>
-  <span>پشتیبانی ۲۴/۷</span>
-  <span>پلن‌های متنوع</span>
-  <span>اتصال پایدار</span>
-  <span>راه‌آزاد VPN</span>
-  <span>اتصال سریع</span>
-  <span>ترافیک نامحدود</span>
-  <span>پشتیبانی ۲۴/۷</span>
-  <span>پلن‌های متنوع</span>
-  <span>اتصال پایدار</span>
-  <span>راه‌آزاد VPN</span>
- </div>
-</div>
-
-<div class="w">
-
-<!-- FEATURES -->
-<section id="features">
- <div class="section-head reveal">
-  <div class="overline">WHY RAH AZAD</div>
-  <h2>چرا راه‌آزاد؟</h2>
-  <p class="description">یک تجربه متفاوت از اتصال اینترنت</p>
- </div>
-
- <div class="grid">
-  <div class="card reveal">
-   <div class="icon">⚡</div>
-   <h3>سرعت بالا</h3>
-   <p>اتصال با سرورهای اختصاصی برای وب‌گردی و استریم.</p>
-  </div>
-
-  <div class="card reveal">
-   <div class="icon">🛡️</div>
-   <h3>امن و پایدار</h3>
-   <p>اتصال مطمئن با قطع و وصلی کمتر در طول روز.</p>
-  </div>
-
-  <div class="card reveal">
-   <div class="icon">∞</div>
-   <h3>ترافیک نامحدود</h3>
-   <p>بدون سقف حجمی در همه پلن‌ها.</p>
-  </div>
-
-  <div class="card reveal">
-   <div class="icon">🎧</div>
-   <h3>پشتیبانی مستقیم</h3>
-   <p>پاسخ‌گویی و راهنمایی اتصال در تلگرام.</p>
-  </div>
- </div>
-</section>
-
-<!-- PRICING -->
-<section id="plans">
- <div class="section-head reveal">
-  <div class="overline">PRICING PLANS</div>
-  <h2>پلن موردنظرت رو انتخاب کن</h2>
-  <p class="description">قیمت‌های شفاف، انتخاب راحت و سریع</p>
- </div>
-
- <div class="segment reveal">
-  <button class="active" data-u="1">تک‌کاربر</button>
-  <button data-u="2">۲ کاربر</button>
- </div>
-
- <div class="grid" id="cards"></div>
-</section>
-
-<!-- STEPS -->
-<section id="steps">
- <div class="section-head reveal">
-  <div class="overline">HOW TO ORDER</div>
-  <h2>چطور سفارش بدم؟</h2>
-  <p class="description">فقط سه مرحله تا دریافت کانفیگ</p>
- </div>
-
- <div class="grid steps">
-  <div class="card step-card reveal">
-   <div class="step-number">۱</div>
-   <h3>انتخاب پلن</h3>
-   <p>مدت و تعداد کاربر رو انتخاب کن و به تلگرام پیام بده.</p>
-  </div>
-
-  <div class="card step-card reveal">
-   <div class="step-number">۲</div>
-   <h3>پرداخت و ارسال رسید</h3>
-   <p>مبلغ رو کارت‌به‌کارت کن و رسید رو از همین صفحه بفرست.</p>
-  </div>
-
-  <div class="card step-card reveal">
-   <div class="step-number">۳</div>
-   <h3>دریافت کانفیگ</h3>
-   <p>بعد از تأیید پرداخت، کانفیگ و راهنمای نصب برات ارسال می‌شه.</p>
-  </div>
- </div>
-</section>
-
-<!-- PAYMENT -->
-<section id="receipt">
- <div class="section-head reveal">
-  <div class="overline">PAYMENT CENTER</div>
-  <h2>پرداخت و ارسال رسید</h2>
-  <p class="description">بعد از پرداخت، تصویر رسید رو همین‌جا بفرست.</p>
- </div>
-
- <div class="two">
-
-  <div class="card center reveal">
-   <div class="icon" style="margin:auto">💳</div>
-   <h3>اطلاعات پرداخت</h3>
-   <p>شماره کارت (برای کپی لمس کنید)</p>
-
-   <button class="bank-number" onclick="copyCard(this)" dir="ltr">
-    6219-8614-5740-4142
-   </button>
-
-   <p>به نام: عرشیا حسین پور</p>
-   <p style="font-size:11px;margin-top:15px;color:var(--muted)">
-    لطفاً قبل از ارسال رسید، اطلاعات پرداخت را بررسی کنید.
-   </p>
-  </div>
-
-  <div class="card reveal">
-   <div class="icon">📤</div>
-   <h3>ارسال تصویر رسید</h3>
-
-   <div class="form">
-
-    <input id="rUser" placeholder="نام کاربری تلگرام (مثلاً @name)" dir="ltr">
-
-    <select id="rPlan">
-     <option>۲ هفته - تک‌کاربر</option>
-     <option>۲ هفته - ۲ کاربر</option>
-     <option>۱ ماهه - تک‌کاربر</option>
-     <option>۱ ماهه - ۲ کاربر</option>
-     <option>۲ ماهه - تک‌کاربر</option>
-     <option>۲ ماهه - ۲ کاربر</option>
-     <option>۳ ماهه - تک‌کاربر</option>
-     <option>۳ ماهه - ۲ کاربر</option>
-    </select>
-
-    <input id="rFile" type="file" accept="image/*">
-
-    <img id="rPrev" class="preview" alt="پیش‌نمایش رسید">
-
-    <button class="btn" id="rBtn" type="button">
-     ارسال رسید ↗
-    </button>
-
-    <div class="message" id="rMsg"></div>
-   </div>
-  </div>
-
- </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
- <div class="section-head reveal">
-  <div class="overline">FAQ CENTER</div>
-  <h2>سوالات متداول</h2>
-  <p class="description">پاسخ سوالات پرتکرار شما</p>
- </div>
-
- <div class="reveal">
-  <details>
-   <summary>تفاوت تک‌کاربر و ۲ کاربر چیه؟</summary>
-   <p>تعداد افرادی که می‌تونن از یک کانفیگ استفاده کنن. در پلن ۲ کاربر، دو نفر با یک کانفیگ وصل می‌شن.</p>
-  </details>
-
-  <details>
-   <summary>کانفیگ چطور تحویل داده می‌شه؟</summary>
-   <p>بعد از پرداخت و تأیید رسید، کانفیگ و راهنمای اتصال در تلگرام برات ارسال می‌شه.</p>
-  </details>
-
-  <details>
-   <summary>روش پرداخت چیه؟</summary>
-   <p>کارت‌به‌کارت به شماره کارت بالا. بعد از پرداخت، تصویر رسید رو از همین صفحه یا تلگرام بفرست.</p>
-  </details>
-
-  <details>
-   <summary>اگه وصل نشدم چیکار کنم؟</summary>
-   <p>در تلگرام به پشتیبانی پیام بده تا راهنمایی‌ت کنن.</p>
-  </details>
- </div>
-</section>
-
-</div>
-
-<!-- FOOTER -->
 <footer>
- <div class="w">
-  <div class="footer-brand">⚡ راه‌آزاد VPN</div>
-  <p>تجربه‌ای متفاوت از اتصال اینترنت</p>
-  <p style="margin-top:12px">
-   پشتیبانی:
-   <a class="footer-link" href="https://t.me/Arshia135784" target="_blank" rel="noopener">@Arshia135784</a>
-  </p>
-  <p style="margin-top:20px">© ۲۰۲۶ راه‌آزاد VPN - تمامی حقوق محفوظ است</p>
- </div>
+  <div class="container footer-inner">
+    <div>
+      <strong>راه‌آزاد VPN</strong>
+      <div>© ۲۰۲۶ همه حقوق محفوظ است.</div>
+    </div>
+    <a class="telegram-link" href="https://t.me/Arshia135784" target="_blank">
+      پشتیبانی: @Arshia135784 ↗
+    </a>
+  </div>
 </footer>
 
-<!-- FLOATING ORDER BAR -->
-<div id="bar">
- <div class="bar-inner">
-  <span id="bt"></span>
-  <div class="bar-buttons">
-   <a class="btn outline" href="#receipt">ارسال رسید</a>
-   <a class="btn" id="bo" href="https://t.me/Arshia135784" target="_blank" rel="noopener">سفارش در تلگرام ↗</a>
-  </div>
- </div>
+<div class="mobile-order">
+  <a href="#pricing" class="btn btn-primary">مشاهده پلن‌ها و تعرفه‌ها</a>
 </div>
 
 <script>
+  const plans = [
+    { duration: "۲ هفته", days: 14, one: 150, two: 200 },
+    { duration: "۱ ماه", days: 30, one: 250, two: 300 },
+    { duration: "۲ ماه", days: 60, one: 350, two: 450 },
+    { duration: "۳ ماه", days: 90, one: 500, two: 700 }
+  ];
 
-/* PRICES - ORIGINAL VALUES */
-const PL=[
- ["۲ هفته","","150","200","تست و کوتاه‌مدت"],
- ["۱ ماهه","محبوب‌ترین","250","300","انتخاب محبوب کاربران"],
- ["۲ ماهه","مقرون‌به‌صرفه","350","450","برای استفاده بلندمدت‌تر"],
- ["۳ ماهه","بیشترین تخفیف","500","700","پلن سه‌ماهه"]
-];
+  let selectedUsers = 1;
 
-let U=1;
-let S=-1;
+  const priceGrid = document.getElementById("priceGrid");
+  const selectedPlan = document.getElementById("selectedPlan");
 
-const fa=n=>String(n).replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d]);
-const ul=()=>U===1?"تک‌کاربر":"۲ کاربر";
+  function renderPlans() {
+    priceGrid.innerHTML = "";
 
-function bar(){
- const b=document.getElementById("bar");
+    plans.forEach((plan, index) => {
+      const price = selectedUsers === 1 ? plan.one : plan.two;
+      const userLabel = selectedUsers === 1 ? "تک‌کاربر" : "دو کاربر";
 
- if(S<0){
-  b.classList.remove("show");
-  document.body.classList.remove("hasbar");
-  return;
- }
+      const card = document.createElement("article");
+      card.className = "price-card" + (index === 2 ? " popular" : "");
 
- const p=PL[S];
+      card.innerHTML = `
+        ${index === 2 ? '<div class="popular-label">پیشنهاد ویژه</div>' : ""}
+        <div class="plan-name">پلن ${index + 1}</div>
+        <div class="plan-duration">${plan.duration}</div>
+        <div class="price">${price.toLocaleString("fa-IR")}</div>
+        <div class="price-unit">هزار تومان</div>
+        <div class="plan-details">
+          <div>✓ ${userLabel}</div>
+          <div>✓ مدت اعتبار ${plan.duration}</div>
+          <div>✓ ترافیک نامحدود</div>
+          <div>✓ پشتیبانی تلگرام</div>
+        </div>
+        <button class="btn btn-primary" type="button"
+          onclick="choosePlan(${index})">انتخاب این پلن</button>
+      `;
 
- document.getElementById("bt").textContent=
- "پلن "+p[0]+" · "+ul()+" · "+fa(p[U+1])+" هزار تومان";
+      priceGrid.appendChild(card);
+    });
+  }
 
- document.getElementById("bo").href=
- "https://t.me/Arshia135784?text="+
- encodeURIComponent("سلام، پلن "+p[0]+" ("+ul()+") رو می‌خوام");
+  document.querySelectorAll(".toggle button").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll(".toggle button").forEach(item =>
+        item.classList.remove("active")
+      );
 
- document.getElementById("rPlan").value=p[0]+" - "+ul();
-
- b.classList.add("show");
- document.body.classList.add("hasbar");
-}
-
-/* RENDER PRICING */
-function render(){
-
- const cards=document.getElementById("cards");
- let html="";
-
- PL.forEach((p,i)=>{
-
-  html+=`
-  <div class="card pricing-card
-   ${i===1?"featured":""}
-   ${i===S?"selected":""}">
-
-   <div class="price-icon">${["◈","⚡","🚀","👑"][i]}</div>
-
-   ${p[1]?`<span class="popular">${p[1]}</span>`:""}
-
-   <h3 style="margin-top:12px">${p[0]}</h3>
-
-   <p class="price-desc">${p[4]}</p>
-
-   <div class="price">
-    ${fa(p[U+1])}
-    <small>هزار تومان</small>
-   </div>
-
-   <div class="discount">
-    ✓ ترافیک نامحدود
-   </div>
-
-   <button class="btn ${i===1?"":"outline"}" data-i="${i}">
-    ${i===S?"✓ انتخاب شده":"انتخاب پلن"}
-   </button>
-
-  </div>`;
- });
-
- cards.innerHTML=html;
- bar();
-}
-
-document.getElementById("cards").addEventListener("click",e=>{
- const b=e.target.closest("button[data-i]");
- if(!b)return;
-
- S=Number(b.dataset.i);
- render();
-});
-
-document.querySelectorAll(".segment button").forEach(b=>{
- b.addEventListener("click",()=>{
-  U=Number(b.dataset.u);
-
-  document.querySelectorAll(".segment button").forEach(x=>{
-   x.classList.toggle("active",x===b);
+      button.classList.add("active");
+      selectedUsers = Number(button.dataset.users);
+      renderPlans();
+    });
   });
 
-  render();
- });
-});
+  function choosePlan(index) {
+    const plan = plans[index];
+    const userLabel = selectedUsers === 1 ? "تک‌کاربر" : "دو کاربر";
+    const optionValue = `${plan.duration} - ${userLabel}`;
 
-render();
-
-/* MOBILE MENU */
-const menu=document.getElementById("menu");
-const nav=document.getElementById("navlinks");
-
-menu.addEventListener("click",()=>{
- nav.classList.toggle("open");
-});
-
-nav.querySelectorAll("a").forEach(a=>{
- a.addEventListener("click",()=>nav.classList.remove("open"));
-});
-
-/* COPY CARD */
-function copyCard(el){
-
- const text="6219861457404142";
-
- const success=()=>{
-  const old=el.textContent;
-  el.textContent="کپی شد ✓";
-  setTimeout(()=>el.textContent=old,1500);
- };
-
- const fallback=()=>{
-  const input=document.createElement("textarea");
-  input.value=text;
-  input.style.position="fixed";
-  input.style.opacity="0";
-  document.body.appendChild(input);
-  input.select();
-
-  try{
-   document.execCommand("copy");
-   success();
-  }catch(e){}
-
-  input.remove();
- };
-
- if(navigator.clipboard&&window.isSecureContext){
-  navigator.clipboard.writeText(text).then(success,fallback);
- }else{
-  fallback();
- }
-}
-
-/* RECEIPT PREVIEW */
-document.getElementById("rFile").addEventListener("change",function(){
-
- const file=this.files[0];
- const preview=document.getElementById("rPrev");
- const msg=document.getElementById("rMsg");
-
- msg.textContent="";
-
- if(!file){
-  preview.style.display="none";
-  return;
- }
-
- if(!file.type.startsWith("image/")){
-  msg.textContent="لطفاً یک تصویر انتخاب کنید.";
-  this.value="";
-  preview.style.display="none";
-  return;
- }
-
- if(file.size>10*1024*1024){
-  msg.textContent="حجم تصویر باید کمتر از ۱۰ مگابایت باشد.";
-  this.value="";
-  preview.style.display="none";
-  return;
- }
-
- preview.src=URL.createObjectURL(file);
- preview.style.display="block";
-});
-
-/* SEND RECEIPT */
-(function(){
-
- const btn=document.getElementById("rBtn");
- const msg=document.getElementById("rMsg");
-
- btn.addEventListener("click",async function(){
-
-  const user=document.getElementById("rUser").value.trim();
-  const plan=document.getElementById("rPlan").value;
-  const file=document.getElementById("rFile").files[0];
-
-  if(!user||!plan||!file){
-   msg.textContent="نام، پلن و فایل رسید را وارد کنید.";
-   return;
+    selectedPlan.value = optionValue;
+    document.getElementById("payment").scrollIntoView({ behavior: "smooth" });
   }
 
-  if(!file.type.startsWith("image/")||file.size>10*1024*1024){
-   msg.textContent="فایل انتخابی معتبر نیست.";
-   return;
+  function copyCard() {
+    const card = "6219861457404142";
+
+    navigator.clipboard.writeText(card).then(() => {
+      const button = document.querySelector(".copy-btn");
+      button.textContent = "شماره کارت کپی شد ✓";
+      setTimeout(() => button.textContent = "کپی شماره کارت", 2000);
+    }).catch(() => {
+      alert("کپی خودکار انجام نشد. شماره کارت را دستی کپی کنید.");
+    });
   }
 
-  btn.disabled=true;
-  msg.textContent="در حال ارسال رسید...";
+  document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+      const item = button.parentElement;
+      item.classList.toggle("open");
+      button.querySelector("span").textContent =
+        item.classList.contains("open") ? "−" : "＋";
+    });
+  });
 
-  const data=new FormData();
-  data.append("user",user);
-  data.append("plan",plan);
-  data.append("photo",file);
+  const receiptForm = document.getElementById("receiptForm");
 
-  try{
+  receiptForm.addEventListener("submit", async event => {
+    event.preventDefault();
 
-   const response=await fetch(
-    "https://crimson-unit-89a4.a90139064.workers.dev/receipt",
-    {
-     method:"POST",
-     body:data
+    const file = document.getElementById("receiptFile").files[0];
+    const message = document.getElementById("formMessage");
+    const submitBtn = document.getElementById("submitBtn");
+
+    if (!file) {
+      message.textContent = "لطفاً تصویر رسید را انتخاب کن.";
+      return;
     }
-   );
 
-   const result=await response.json();
+    if (!file.type.startsWith("image/")) {
+      message.textContent = "فقط فایل تصویری قابل قبول است.";
+      return;
+    }
 
-   if(!response.ok||!result.ok){
-    throw new Error("ارسال ناموفق بود");
-   }
+    const formData = new FormData(receiptForm);
 
-   msg.textContent=
-    "رسید ارسال شد. کد سفارش: "+result.orderId+
-    " | کد پیگیری: "+result.trackingCode;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "در حال ارسال...";
+    message.textContent = "";
 
-  }catch(error){
+    try {
+      const response = await fetch(
+        "https://crimson-unit-89a4.a90139064.workers.dev/receipt",
+        {
+          method: "POST",
+          body: formData
+        }
+      );
 
-   msg.textContent="ارسال ناموفق بود؛ دوباره تلاش کنید.";
+      if (!response.ok) throw new Error("ارسال ناموفق بود");
 
-  }finally{
+      message.textContent = "درخواست ارسال شد. برای پیگیری با پشتیبانی در ارتباط باش.";
+      receiptForm.reset();
 
-   btn.disabled=false;
-
-  }
-
- });
-
-})();
-
-/* SCROLL ANIMATIONS */
-if("IntersectionObserver" in window&&
- !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-
- const observer=new IntersectionObserver(entries=>{
-
-  entries.forEach(entry=>{
-
-   if(entry.isIntersecting){
-    entry.target.classList.add("visible");
-    observer.unobserve(entry.target);
-   }
-
+    } catch (error) {
+      message.textContent =
+        "ارسال رسید انجام نشد. لطفاً دوباره تلاش کن یا از تلگرام پیام بده.";
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "ارسال رسید";
+    }
   });
 
- },{threshold:.12});
-
- document.querySelectorAll(".reveal").forEach(el=>{
-  observer.observe(el);
- });
-
-}
-
+  renderPlans();
 </script>
+
 </body>
 </html>
-     
